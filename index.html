@@ -1,0 +1,924 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MUJEEF VENTURES | Quality Food Products</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #fffaf3;
+            color: #222;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        header {
+            background: #35170b;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+        }
+
+        nav {
+            max-width: 1200px;
+            height: 75px;
+            margin: auto;
+            padding: 0 25px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            color: #ffb300;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffb300;
+        }
+
+        .menu-btn {
+            display: none;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 90vh;
+
+            background:
+                linear-gradient(
+                    rgba(40, 15, 5, 0.65),
+                    rgba(40, 15, 5, 0.65)
+                ),
+                url("https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=1600&q=85");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+            color: white;
+            padding: 30px;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero h1 {
+            color: #ffb300;
+            font-size: clamp(45px, 8vw, 85px);
+            margin-bottom: 5px;
+        }
+
+        .hero h2 {
+            font-size: clamp(25px, 4vw, 42px);
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #ffb300;
+            color: #35170b;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: white;
+            transform: translateY(-3px);
+        }
+
+        /* ================= GENERAL ================= */
+
+        section {
+            padding: 80px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            color: #35170b;
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #666;
+        }
+
+        /* ================= ABOUT ================= */
+
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .about-text h2 {
+            color: #35170b;
+            font-size: 38px;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        /* ================= PRODUCTS ================= */
+
+        .products {
+            background: #fff8ed;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-info h3 {
+            color: #35170b;
+            font-size: 23px;
+            margin-bottom: 10px;
+        }
+
+        .product-info p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .order-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 18px;
+            background: #25d366;
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        /* ================= WHY US ================= */
+
+        .why-us {
+            background: white;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 35px 20px;
+            border-radius: 15px;
+            background: #fff8ed;
+        }
+
+        .feature-icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .feature h3 {
+            color: #35170b;
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* ================= CONTACT ================= */
+
+        .contact {
+            background:
+                linear-gradient(
+                    rgba(53,23,11,0.93),
+                    rgba(53,23,11,0.93)
+                ),
+                url();
+
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        .contact .section-title h2 {
+            color: #ffb300;
+        }
+
+        .contact .section-title p {
+            color: #ddd;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-info {
+            padding: 30px;
+        }
+
+        .contact-info h3 {
+            color: #ffb300;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin: 18px 0;
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            color: #ffb300;
+        }
+
+        .contact-buttons {
+            margin-top: 25px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .call-btn {
+            background: #ffb300;
+            color: #35170b !important;
+            padding: 13px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        .whatsapp-btn {
+            background: #25d366;
+            padding: 13px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        /* ================= FORM ================= */
+
+        .contact-form {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .contact-form textarea {
+            height: 130px;
+            resize: none;
+        }
+
+        .contact-form button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background: #25d366;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #1d0c05;
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+        }
+
+        footer strong {
+            color: #ffb300;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 900px) {
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-content,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 650px) {
+
+            nav {
+                height: 65px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            nav ul {
+                position: absolute;
+                top: 65px;
+                left: 0;
+                width: 100%;
+
+                background: #35170b;
+
+                display: none;
+                flex-direction: column;
+
+                text-align: center;
+                gap: 0;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                padding: 18px;
+                border-top: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .hero {
+                min-height: 80vh;
+            }
+
+            section {
+                padding: 60px 15px;
+            }
+
+            .section-title h2 {
+                font-size: 32px;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image img {
+                height: 300px;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+            }
+
+            .contact-buttons a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<header>
+
+    <nav>
+
+        <div class="logo">
+            MUJEEF <span>VENTURES</span>
+        </div>
+
+        <div class="menu-btn" onclick="toggleMenu()">
+            ☰
+        </div>
+
+        <ul id="navLinks">
+
+            <li>
+                <a href="#home">Home</a>
+            </li>
+
+            <li>
+                <a href="#about">About</a>
+            </li>
+
+            <li>
+                <a href="#products">Products</a>
+            </li>
+
+            <li>
+                <a href="#why-us">Why Us</a>
+            </li>
+
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <h1>MUJEEF</h1>
+
+        <h2>VENTURES</h2>
+
+        <p>
+            Fresh, quality and trusted food products
+            for your family and business.
+        </p>
+
+        <a href="#products" class="btn">
+            Explore Our Products
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="about" id="about">
+
+    <div class="container">
+
+        <div class="about-content">
+
+            <div class="about-image">
+
+                <img
+                    src="img/fresh-frozen-whole-chickens-covered-in-ice-in-the-market-meat-section-photo.webp"
+                    alt="Fresh quality meat">
+
+            </div>
+
+
+            <div class="about-text">
+
+                <h2>About MUJEEF VENTURES</h2>
+
+                <p>
+                    Welcome to MUJEEF VENTURES, your trusted
+                    destination for quality food products.
+                </p>
+
+                <p>
+                    We provide fresh cow meat, chicken,
+                    gizzard and natural honey for families,
+                    events and businesses.
+                </p>
+
+                <p>
+                    Our goal is simple: quality products,
+                    excellent service and happy customers.
+                </p>
+
+                <a href="#contact" class="btn">
+                    Contact Us
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PRODUCTS ================= -->
+
+<section class="products" id="products">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Our Products</h2>
+
+            <p>
+                Fresh and quality products you can trust.
+            </p>
+
+        </div>
+
+
+        <div class="product-grid">
+
+
+            <!-- COW MEAT -->
+
+            <div class="product-card">
+
+                <img
+                    src="img/Screenshot 2026-08-15 045147.png"
+                    alt="Fresh cow meat">
+
+                <div class="product-info">
+
+                    <h3>🐄 Cow Meat</h3>
+
+                    <p>
+                        Fresh quality beef for your
+                        favourite meals.
+                    </p>
+
+                    <a
+                        class="order-btn"
+                        href="https://wa.me/2348133953375?text=Hello%20MUJEEF%20VENTURES,%20I%20want%20to%20order%20cow%20meat."
+                        target="_blank">
+
+                        Order on WhatsApp
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- CHICKEN -->
+
+            <div class="product-card">
+
+                <img
+                    src="img/raw-fresh-chicken-photo.jpg"
+                    alt="Fresh chicken">
+
+                <div class="product-info">
+
+                    <h3>🍗 Chicken</h3>
+
+                    <p>
+                        Fresh chicken for family meals,
+                        parties and events.
+                    </p>
+
+                    <a
+                        class="order-btn"
+                        href="https://wa.me/2348133953375?text=Hello%20MUJEEF%20VENTURES,%20I%20want%20to%20order%20chicken."
+                        target="_blank">
+
+                        Order on WhatsApp
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- GIZZARD -->
+
+            <div class="product-card">
+
+                <img
+                    src="img/360_F_565582092_v5pLekGlYMiDKJmZ52gjcHNsyqm9mlHD.webp"
+                    alt="Chicken gizzard">
+
+                <div class="product-info">
+
+                    <h3>🍖 Gizzard</h3>
+
+                    <p>
+                        Quality gizzard for delicious
+                        meals and special occasions.
+                    </p>
+
+                    <a
+                        class="order-btn"
+                        href="https://wa.me/2348133953375?text=Hello%20MUJEEF%20VENTURES,%20I%20want%20to%20order%20gizzard."
+                        target="_blank">
+
+                        Order on WhatsApp
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- HONEY -->
+
+            <div class="product-card">
+
+                <img
+                    src="img/Screenshot 2026-08-15 045253.png"
+                    alt="Natural honey">
+
+                <div class="product-info">
+
+                    <h3>🍯 Natural Honey</h3>
+
+                    <p>
+                        Sweet and natural honey for
+                        everyday enjoyment.
+                    </p>
+
+                    <a
+                        class="order-btn"
+                        href="https://wa.me/2348133953375?text=Hello%20MUJEEF%20VENTURES,%20I%20want%20to%20order%20honey."
+                        target="_blank">
+
+                        Order on WhatsApp
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= WHY US ================= -->
+
+<section class="why-us" id="why-us">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Why Choose Us?</h2>
+
+            <p>
+                Quality and customer satisfaction come first.
+            </p>
+
+        </div>
+
+
+        <div class="features">
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🥩
+                </div>
+
+                <h3>Quality Products</h3>
+
+                <p>
+                    We focus on providing fresh and
+                    quality food products.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🚚
+                </div>
+
+                <h3>Reliable Service</h3>
+
+                <p>
+                    We value our customers and provide
+                    excellent service.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    ❤️
+                </div>
+
+                <h3>Customer Satisfaction</h3>
+
+                <p>
+                    Your satisfaction is one of our
+                    biggest priorities.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section class="contact" id="contact">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Contact MUJEEF VENTURES</h2>
+
+            <p>
+                Ready to place an order? Contact us today.
+            </p>
+
+        </div>
+
+
+        <div class="contact-grid">
+
+
+            <!-- CONTACT INFORMATION -->
+
+            <div class="contact-info">
+
+                <h3>Let's Do Business 🤝</h3>
+
+                <p>
+                    📞 Phone:
+                    <a href="tel:08031535652">
+                        08031535652
+                    </a>
+                </p>
+
+                <p>
+                    📱 WhatsApp:
+                    <a
+                        href="https://wa.me/2348133953375"
+                        target="_blank">
+
+                        08133953375
+
+                    </a>
+                </p>
+
+                <p>
+                    📍 Location:
+                    <br>
+                    BSD BABA OLOSE OKE ODO
+                    KULIYAT AFENIFERE
+                    KOBONGBOGBE ATMAN
+                    OSOGBO,OSUN STATE
+                </p>
+
+
+                <div class="contact-buttons">
+
+                    <a
+                        class="call-btn"
+                        href="tel:08031535652">
+
+                        📞 Call Us
+
+                    </a>
+
+
+                    <a
+                        class="whatsapp-btn"
+                        href="https://wa.me/2348133953375"
+                        target="_blank">
+
+                        💬 WhatsApp Us
+
+                    </a>
+
+                </div>
+
+            </div>
